@@ -1,0 +1,21 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc"]
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "source": {
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)",
+    "include": ["src", "package.json", "README.md"]
+  },
+  "opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "recurse": true,
+    "verbose": true,
+    "template": "node_modules/better-docs"
+  }
+}

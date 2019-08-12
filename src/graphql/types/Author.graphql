@@ -1,0 +1,5 @@
+type Author {
+  firstName: String
+  lastName: String
+  books: [Book]
+}

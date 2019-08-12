@@ -1,0 +1,90 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "description": "A scalable service that consolidates multiple APIs (mostly RESTful) into a single, consolidated endpoint for consumers.",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=7.6.0"
+  },
+  "scripts": {
+    "docs": "jsdoc --configure jsdoc.json && jsdoc-md-standard -s src/*.js",
+    "docs:server": "live-server --open=docs/$npm_package_name/$npm_package_version --watch=src,docs --port=6000",
+    "prestart:docs": "npm run docs",
+    "start": "nodemon src/server.js",
+    "lint": "eslint src test",
+    "lint:watch": "npm-watch lint",
+    "test": "tape test/index.js | faucet",
+    "test:coverage": "nyc tape test/index.js | tap-nyc"
+  },
+  "keywords": [
+    "api",
+    "api gateway",
+    "graphql",
+    "proxy",
+    "rest",
+    "restful"
+  ],
+  "author": "David Nunez <arizonatribe@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "apollo-server": "^2.8.1",
+    "apollo-server-express": "^2.8.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cors-helper": "^1.0.0",
+    "cross-fetch": "^3.0.4",
+    "dataloader": "^1.4.0",
+    "envalid": "^5.0.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^4.0.0",
+    "graphql": "^14.4.2",
+    "graphql-tools": "^4.0.5",
+    "helmet": "^3.20.0",
+    "jwt-decode": "^2.2.0",
+    "merge-graphql-schemas": "^1.7.0",
+    "pino": "^5.13.2",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "better-docs": "^1.1.6",
+    "concurrently": "^4.1.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-graphql": "^3.0.3",
+    "eslint-plugin-import": "^2.18.0",
+    "faker": "^4.1.0",
+    "faucet": "0.0.1",
+    "jsdoc": "^3.6.2",
+    "jsdoc-md-standard": "^1.0.5",
+    "jsome": "^2.5.0",
+    "live-server": "^1.2.1",
+    "nodemon": "^1.19.1",
+    "npm-watch": "^0.6.0",
+    "nyc": "^14.1.1",
+    "pino-pretty": "^3.2.0",
+    "tap-nyc": "^1.0.3",
+    "tape": "^4.11.0"
+  },
+  "watch": {
+    "docs": "{src}/*.js",
+    "lint": "{src,test}/*.js"
+  },
+  "nodemonConfig": {
+    "events": {
+      "start": "clear"
+    },
+    "quiet": true,
+    "ignore": [
+      "node_modules"
+    ],
+    "watch": [
+      "./test",
+      "./src"
+    ],
+    "execMap": {
+      "js": "clear && cross-env NODE_ENV=development node src/server.js | pino-pretty"
+    }
+  }
+}

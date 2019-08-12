@@ -1,0 +1,13 @@
+# The "Query" type is the root of all GraphQL queries.
+type Query {
+  students: [Student]
+  studentById(id: ID!): Student
+  authors: [Author]
+  books: [Book]
+}
+
+type Mutation {
+  deleteStudent(id: ID!): Boolean
+  updateStudent(student: StudentInput!): Student
+  createStudent(student: StudentInput!): Student
+}
