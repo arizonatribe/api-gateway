@@ -1,0 +1,68 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "A small RESTful API to marshal data from a Mongo DB store to a consuming client",
+  "private": true,
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/server.js",
+    "start:dev": "NODE_ENV=development nodemon lib/server.js",
+    "start:prod": "NODE_ENV=production node lib/server.js",
+    "seed": "node lib/seedDatabase.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "student",
+    "rest api",
+    "nodejs",
+    "express"
+  ],
+  "author": "David Nunez <arizonatribe@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cors-helper": "^1.0.0",
+    "envalid": "^5.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "mongoose": "^5.5.11",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "faker": "^4.1.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.17.1"
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "parser": "babylon",
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "useTabs": false
+  },
+  "nodemonConfig": {
+    "watch": [
+      "lib"
+    ],
+    "delay": "1000"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
+    "env": {
+      "es6": true,
+      "node": true
+    }
+  }
+}

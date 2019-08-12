@@ -1,0 +1,13 @@
+{
+  "events": {
+    "start": "clear"
+  },
+  "quiet": true,
+  "ignore": [
+    "node_modules"
+  ],
+  "watch": ["./src"],
+  "execMap": {
+    "js": "clear && cross-env NODE_ENV=development node src/server.js | pino-pretty"
+  }
+}

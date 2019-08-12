@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    form.form-login(action="/registerapp", method="post", role="form")
+        .form-group
+            label Name
+            input(type="text", name="name", required="true", placeholder="app name")
+        .form-group
+            label Redirect URL (or host domain)
+            input(type="text", name="redirect_uri", required="true", placeholder="url")
+        .form-group
+            button.btn.btn-lg.btn-primary.btn-block(type="submit") Register

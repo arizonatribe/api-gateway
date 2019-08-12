@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    form.form-login(action="/register", method="post", role="form")
+        .form-group
+            label Name
+            input(type="text", name="name", required="true", placeholder="name")
+        .form-group
+            label Email
+            input(type="email", name="email", required="true", pattern="#{email_pattern}", placeholder="email")
+        .form-group
+            label Password
+            input(type="password", name="password", required="true", pattern="#{password_pattern}", placeholder="password")
+        .form-group
+            label Confirm Password
+            input(type="password", name="confirm_password", required="true", pattern="#{password_pattern}", placeholder="confirm password")
+        .form-group
+            label Profile Image
+            div
+                button.btn#btn-profile-image-find(type="button") Upload
+                #profile-image-uploade-wrapper
+                    input#btn-profile-image-upload(type="file", value="Upload")
+                    input#hidden-profile(type="hidden", name="profile")
+            p#profile-instructions Please select an image to use as your profile (must be under 400KB)
+            img#img-profile.profile-image(src="")
+            p#p-image-size
+        .form-group
+            button.btn.btn-lg.btn-primary.btn-block(type="submit") Register
+    script(type="text/javascript", src="/js/uploader.js")

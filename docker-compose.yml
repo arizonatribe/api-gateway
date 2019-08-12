@@ -1,0 +1,70 @@
+version: "3.7"
+services:
+  api-gateway:
+    image: api-gateway:latest
+    container_name: api-gateway
+    build:
+      context: ./api-gateway
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - ./api-gateway/.env
+    ports:
+      - "5000:5000"
+
+  students-api:
+    image: students-api:latest
+    container_name: students-api
+    build:
+      context: ./students-api
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - ./students-api/.env
+    volumes:
+      - students-db-data:/data/db
+    ports:
+      - "6000:6000"
+
+  students-ui:
+    image: students-ui:latest
+    container_name: students-ui
+    depends_on:
+      - students-api
+    build:
+      context: ./students-client
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "3000:3000"
+
+  auth-provider:
+    build: ./auth-provider
+    image: auth-provider:latest
+    container_name: auth-provider
+    env_file: ./.env_oauth
+    links:
+      - auth-db
+    ports:
+    - 5009:5009
+    environment:
+      - ASSETS_DIRECTORY=/var/lib/auth-provider/src/public
+      - PORT=5009
+      - DB_HOST=auth-db
+      - MONGO_SLEEP_COUNT=18
+      - DB_PORT=27017
+
+  auth-db:
+    build: ./auth-db
+    image: auth-db:latest
+    container_name: auth-db
+    volumes_from:
+      - auth-db-data
+
+  auth-db-data:
+    build: ./auth-db
+    image: auth-db:latest
+    volumes:
+      - auth-db-data:/data/db
+    command: /bin/bash
+      
+volumes:
+  students-db-data:
+  auth-db-data:

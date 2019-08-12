@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    form.form-login(action="/login", method="post", role="form")
+        .form-group
+            label Email
+            input(type="email", name="email", required="true", placeholder="email")
+        .form-group
+            label Password
+            input(type="password", name="password", required="true", placeholder="password")
+        .form-group
+            button.btn.btn-lg.btn-primary.btn-block(type="submit") Login

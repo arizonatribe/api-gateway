@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ $MONGO_SLEEP_COUNT -gt 0 ]]
+then
+    sleep $MONGO_SLEEP_COUNT
+fi
+npm run ${1-start}
