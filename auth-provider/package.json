@@ -37,7 +37,7 @@
     "express-pino-logger": "^4.0.0",
     "helmet": "^3.20.0",
     "jade": "1.11.0",
-    "jsonwebtoken": "7.0.0",
+    "jsonwebtoken": "9.0.0",
     "mongoose": "5.7.5",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
