@@ -53,7 +53,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-graphql": "^3.0.3",
     "eslint-plugin-import": "^2.18.0",
-    "faucet": "0.0.1",
+    "faucet": "0.0.4",
     "jsdoc": "^3.6.2",
     "jsdoc-md-standard": "^1.0.5",
     "jsome": "^2.5.0",
